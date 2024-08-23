@@ -19,7 +19,7 @@ async def get_orders(request_user_id: str = Header(None)):
 @app.post('/api/orders', response_model=Order_Pydantic)
 async def create_user(order: OrderIn_Pydantic,
                       request_user_id: str = Header(None)):
-    data = order.dict()
+    data = order.model_dump()
     data.update({'created_by': request_user_id})
 
     order_obj = await Orders.create(**data)
