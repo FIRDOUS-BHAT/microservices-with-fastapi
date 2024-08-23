@@ -1,6 +1,9 @@
 fastapi==0.112.1
 uvicorn==0.30.6
 PyJWT==2.9.0
+pydantic-settings==2.4.0
+
+async_timeout==4.0.3
 
 # async http requests & fast dns resolving
 aiohttp==3.10.5
