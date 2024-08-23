@@ -1,6 +1,6 @@
 import jwt
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from conf import settings
 from exceptions import AuthTokenMissing, AuthTokenExpired, AuthTokenCorrupted
@@ -17,7 +17,8 @@ def generate_access_token(
         )
 ):
 
-    expire = datetime.utcnow() + expires_delta
+    expire = datetime.now(timezone.utc) + expires_delta
+
     token_data = {
         'id': data['id'],
         'user_type': data['user_type'],
