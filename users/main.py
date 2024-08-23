@@ -55,7 +55,7 @@ async def create_user(user: UserForm,
         )
 
     hashed_password = get_password_hash(user.password)
-    data = user.dict()
+    data = user.model_dump()
     user_in_db = insert_user(data, hashed_password, request_user_id)
 
     return user_in_db
